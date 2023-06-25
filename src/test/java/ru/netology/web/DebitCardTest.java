@@ -1,4 +1,4 @@
-package ru.netology.orderCard;
+package ru.netology.web;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.jupiter.api.AfterEach;
@@ -42,19 +42,14 @@ public class DebitCardTest {
     }
 
     @Test
-    void shouldTestOrderCard() throws InterruptedException {
-        driver.get("http://localhost:9999/");
-
+    void shouldTestOrderCard()  {
         List<WebElement> elements = driver.findElements(By.className("input__control"));
-        elements.get(0).sendKeys("Кузнецов Анатолий");
+        elements.get(0).sendKeys("Салтыков-Щедрин Михаил");
         elements.get(1).sendKeys("+79012345678");
         driver.findElement(By.className("checkbox__box")).click();
         driver.findElement(By.className("button")).click();
         String text = driver.findElement(By.cssSelector("[data-test-id=order-success]")).getText();
         assertEquals("  Ваша заявка успешно отправлена! Наш менеджер свяжется с вами в ближайшее время.", text);
-
-        Thread.sleep(5000);
-
 
     }
 }
