@@ -44,8 +44,8 @@ public class DebitCardTest {
     @Test
     void shouldTestOrderCard()  {
         List<WebElement> elements = driver.findElements(By.className("input__control"));
-        elements.get(0).sendKeys("Салтыков-Щедрин Михаил");
-        elements.get(1).sendKeys("+79012345678");
+        driver.findElement(By.cssSelector("[data-test-id=name] input")).sendKeys("Салтыков-Щедрин Михаил");
+        driver.findElement(By.cssSelector("[data-test-id=phone] input")).sendKeys("+79012345678");
         driver.findElement(By.className("checkbox__box")).click();
         driver.findElement(By.className("button")).click();
         String text = driver.findElement(By.cssSelector("[data-test-id=order-success]")).getText();
